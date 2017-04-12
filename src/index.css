@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  margin-right: 4px;
+  margin-top: 2px;
+}
+
+.active {
+  background-color: ##018c59;
+  border: 2px solid red;
+}
+
+.footer {
+  margin: 50px;
+}
