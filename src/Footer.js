@@ -5,11 +5,25 @@ class Footer extends React.Component{
     if (this.props.gameState !== 'recall'){ return null }
     return (
       <div className="remaining-count">
-        {this.props.activeCellsCount - this.props.correctGuesses.length}
+        <p>You need {this.props.activeCellsCount - this.props.correctGuesses.length} more squares.</p>
+        <p>Three Red and you lose!</p>
       </div>
     );
   }
 
+
+  playAgainButton(){
+    if(["won", "lost"].indexOf(this.props.gameState) >= 0){
+      return(
+        <button className="play-again-button"
+                           onClick={this.props.playAgain}>
+         Play Again
+        </button>
+      );
+    }
+
+
+  }
 
   render(){
     return(
@@ -18,6 +32,7 @@ class Footer extends React.Component{
           {this.props.hints[this.props.gameState]}
         </div>
         {this.remainingCount()}
+        {this.playAgainButton()}
       </div>
     );
   }
@@ -29,7 +44,7 @@ Footer.defaultProps = {
     memorize: "Memorize", 
     recall: "Recall",
     won: "Well Done!",
-    lost: "Game Over..."
+    lost: "Game Over...bummer"
   }
 }
 

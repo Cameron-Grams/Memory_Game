@@ -26,12 +26,33 @@ class Game extends React.Component{
       correctGuesses: []
      };
   }
+
   componentDidMount(){
-    setTimeout(() => {
+    this.memorizeTimerId = setTimeout(() => {
       this.setState({ gameState: 'memorize' }, () => {
-        setTimeout(() => this.setState({ gameState: 'recall' }), 2000);
+        this.recallTimerId = setTimeout(
+          this.startRecallMode.bind(this), 
+          2000
+        );
       });
     }, 2000);
+  }
+
+  componentWillUnmount(){
+    clearTimeout(this.memorizeTimerId);
+    clearTimeout(this.recallTimerId);
+    this.finishGame();
+  }
+
+  startRecallMode(){
+    this.setState({ gameState: 'recall' }, () => {
+      this.secondsRemaining = this.props.timeoutSeconds;
+      setInterval(() => {
+        if (--this.secondsRemaining === 0){
+          this.setState({ gameState: this.finishGame("lost") });
+        }
+    }, 1000);
+    });
   }
 
   recordGuess({ cellId, userGuessIsCorrect }){
@@ -39,15 +60,20 @@ class Game extends React.Component{
     if (userGuessIsCorrect){
       correctGuesses.push(cellId);
       if (correctGuesses.length === this.props.activeCellsCount){
-        gameState = "won";
+        gameState = this.finishGame("won");
       }
     } else {
       wrongGuesses.push(cellId);
       if (wrongGuesses.length > this.props.allowedWrongAttempts){
-        gameState = "lost";
+        gameState = this.finishGame("lost");
       }
     }
     this.setState({ correctGuesses, wrongGuesses, gameState });
+  }
+
+  finishGame(gameState){
+    clearInterval(this.playTimerId);
+    return gameState;
   }
 
 
@@ -65,7 +91,9 @@ class Game extends React.Component{
                                    {...this.state}  />)}
           </Row>
         ))}
-      <Footer {...this.state} activeCellsCount={this.props.activeCellsCount} />
+      <Footer {...this.state}
+              playAgain={this.props.createNewGame}
+              activeCellsCount={this.props.activeCellsCount} />
       </div>
     );
   }
