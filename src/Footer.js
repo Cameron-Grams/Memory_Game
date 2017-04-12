@@ -15,7 +15,7 @@ class Footer extends React.Component{
     return(
       <div className="footer">
         <div className="hint">
-          {this.props.hints[this.props.gameState]}...
+          {this.props.hints[this.props.gameState]}
         </div>
         {this.remainingCount()}
       </div>
