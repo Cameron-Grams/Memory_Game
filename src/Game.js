@@ -72,7 +72,8 @@ class Game extends React.Component{
 }
 
 Game.defaultProps = {
-  allowedWrongAttempts: 2
-}
+  allowedWrongAttempts: 2,
+  timeoutSeconds: 10
+};
 
 export default Game;
