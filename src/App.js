@@ -14,6 +14,10 @@ class App extends Component {
     this.state = { gameId: 1};
   }
 
+  sameLevel(){
+    this.setState({ gameId: this.state.gameId + 1 });
+  }
+
   createNewGame(){
     this.setState({ gameId: this.state.gameId + 1 });
     columns += 1;
@@ -27,6 +31,7 @@ class App extends Component {
         <Game key={this.state.gameId}
               round={round}
               createNewGame={this.createNewGame.bind(this)}
+              sameLevel={this.sameLevel.bind(this)}
               rows={rows} columns={columns}
               activeCellsCount={activeCellCount} />
       </div>

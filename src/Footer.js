@@ -10,10 +10,10 @@ class Footer extends React.Component{
       </div>
     );
   }
-
-
   playAgainButton(){
-    if(["won", "lost"].indexOf(this.props.gameState) >= 0){
+    let nextGame;
+    if(["won"].indexOf(this.props.gameState) >= 0){
+      nextGame = this.props.playAgain;
       return(
         <button className="play-again-button"
                            onClick={this.props.playAgain}>
@@ -21,23 +21,29 @@ class Footer extends React.Component{
         </button>
       );
     }
-
-
+    if (["lost"].indexOf(this.props.gameState) >= 0){
+      return(
+        <button className="play-again-button"
+                           onClick={this.props.noAdvancePlay}>
+         Play Again 2
+        </button>
+      );
+    }
   }
 
-  render(){
-    return(
-      <div className="footer">
-        <h3>Round Number {this.props.round}</h3>
-        <div className="hint">
-          {this.props.hints[this.props.gameState]}
+    render(){
+      return(
+        <div className="footer">
+          <h3>Round Number {this.props.round}</h3>
+          <div className="hint">
+            {this.props.hints[this.props.gameState]}
+          </div>
+          {this.remainingCount()}
+          {this.playAgainButton()}
         </div>
-        {this.remainingCount()}
-        {this.playAgainButton()}
-      </div>
-    );
+      );
+    }
   }
-}
 
 Footer.defaultProps = {
   hints: {

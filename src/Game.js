@@ -46,10 +46,10 @@ class Game extends React.Component{
 
   startRecallMode(){
     this.setState({ gameState: 'recall' }, () => {
-      this.secondsRemaining = this.props.timeoutSeconds;
-      setInterval(() => {
-        if (--this.secondsRemaining === 0){
-          this.setState({ gameState: this.finishGame("lost") });
+    this.secondsRemaining = this.props.timeoutSeconds;
+    this.playTimerId = setInterval(() => {
+      if (--this.secondsRemaining === 0){
+        this.setState({ gameState: this.finishGame("lost") });
         }
     }, 1000);
     });
@@ -94,6 +94,9 @@ class Game extends React.Component{
       <Footer {...this.state}
               round={this.props.round}
               playAgain={this.props.createNewGame}
+
+              noAdvancePlay={this.props.sameLevel}
+
               activeCellsCount={this.props.activeCellsCount} />
       </div>
     );
