@@ -1,14 +1,15 @@
 body {
+  background-color: rgb(150, 145, 103);
   text-align: center;
-  margin: 0;
+  margin: 10px;
   padding: 0;
   font-family: sans-serif;
 }
 
 
 .cell {
-  width: 100px;
-  height: 100px;
+  width: 25px;
+  height: 25px;
   display: inline-block;
   border: 1px solid #aaa;
   background: #f8f8f8;
@@ -17,7 +18,7 @@ body {
 }
 
 .active {
-  background-color: rgb(1, 140, 89);
+  background-color: #018c59;
 }
 
 .guess-true {
@@ -29,5 +30,26 @@ body {
 }
 
 .footer {
-  margin: 50px;
+  margin: 25px;
 }
+
+.play-again-button {
+  background-color: rgb(237, 210, 4);
+  margin: 5px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
