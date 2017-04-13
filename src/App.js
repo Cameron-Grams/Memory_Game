@@ -16,14 +16,17 @@ class App extends Component {
 
   createNewGame(){
     this.setState({ gameId: this.state.gameId + 1 });
+
     columns += 1;
     rows += 1;
+    round += 1;
   }
 
   render() {
     return (
       <div>
         <Game key={this.state.gameId}
+              round={round}
               createNewGame={this.createNewGame.bind(this)}
               rows={rows} columns={columns}
               activeCellsCount={activeCellCount} />

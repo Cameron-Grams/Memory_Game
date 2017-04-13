@@ -28,6 +28,7 @@ class Footer extends React.Component{
   render(){
     return(
       <div className="footer">
+        <h3>Round Number {this.props.round}</h3>
         <div className="hint">
           {this.props.hints[this.props.gameState]}
         </div>
