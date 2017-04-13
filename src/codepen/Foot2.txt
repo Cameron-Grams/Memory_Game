@@ -10,27 +10,20 @@ class Footer extends React.Component{
       </div>
     );
   }
-
-  showButton(nextGame){
-    return(
-   <button className="play-again-button"
-                           onClick={nextGame}>
-       Play Again
-      </button>     
-    );
-  }
-
   playAgainButton(){
-    let nextGame, showButton;
-    console.log(this.props.gameState);
+    let nextGame;
     if(["won"].indexOf(this.props.gameState) >= 0){
       nextGame = this.props.playAgain;
-      return(this.showButton(nextGame));
     }
     if (["lost"].indexOf(this.props.gameState) >= 0){
       nextGame = this.props.noAdvancePlay;
-      return(this.showButton(nextGame));
     }
+    return(
+      <button className="play-again-button"
+                           onClick={nextGame}>
+       Play Again
+      </button>
+      );
     }
     
     render(){
