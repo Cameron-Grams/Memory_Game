@@ -16,7 +16,6 @@ class App extends Component {
 
   createNewGame(){
     this.setState({ gameId: this.state.gameId + 1 });
-
     columns += 1;
     rows += 1;
     round += 1;

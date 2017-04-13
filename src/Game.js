@@ -79,7 +79,7 @@ class Game extends React.Component{
 
   render(){
     let showActiveCells = ["memorize", "lost"].indexOf(this.state.gameState) >= 0;
-
+     
     return(
       <div className="gird">
         {this.matrix.map((row, ri) => (
