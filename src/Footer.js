@@ -25,7 +25,7 @@ class Footer extends React.Component{
       return(
         <button className="play-again-button"
                            onClick={this.props.noAdvancePlay}>
-         Play Again 2
+         P lay Again 2
         </button>
       );
     }
