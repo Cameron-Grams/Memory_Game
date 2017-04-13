@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import Game from "./Game";
 
+var rows = 5,
+   columns = 5,
+   round = 1,
+   activeCellCount = 6;
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -11,6 +16,8 @@ class App extends Component {
 
   createNewGame(){
     this.setState({ gameId: this.state.gameId + 1 });
+    columns += 1;
+    rows += 1;
   }
 
   render() {
@@ -18,8 +25,8 @@ class App extends Component {
       <div>
         <Game key={this.state.gameId}
               createNewGame={this.createNewGame.bind(this)}
-              rows={5} columns={5}
-              activeCellsCount={6} />
+              rows={rows} columns={columns}
+              activeCellsCount={activeCellCount} />
       </div>
     );
   }
