@@ -94,9 +94,7 @@ class Game extends React.Component{
       <Footer {...this.state}
               round={this.props.round}
               playAgain={this.props.createNewGame}
-
               noAdvancePlay={this.props.sameLevel}
-
               activeCellsCount={this.props.activeCellsCount} />
       </div>
     );

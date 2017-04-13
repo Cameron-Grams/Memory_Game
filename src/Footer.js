@@ -14,23 +14,18 @@ class Footer extends React.Component{
     let nextGame;
     if(["won"].indexOf(this.props.gameState) >= 0){
       nextGame = this.props.playAgain;
-      return(
-        <button className="play-again-button"
-                           onClick={this.props.playAgain}>
-         Play Again
-        </button>
-      );
     }
     if (["lost"].indexOf(this.props.gameState) >= 0){
-      return(
-        <button className="play-again-button"
-                           onClick={this.props.noAdvancePlay}>
-         P lay Again 2
-        </button>
+      nextGame = this.props.noAdvancePlay;
+    }
+    return(
+      <button className="play-again-button"
+                           onClick={nextGame}>
+       Play Again
+      </button>
       );
     }
-  }
-
+    
     render(){
       return(
         <div className="footer">
