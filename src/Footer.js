@@ -22,7 +22,6 @@ class Footer extends React.Component{
 
   playAgainButton(){
     let nextGame, showButton;
-    console.log(this.props.gameState);
     if(["won"].indexOf(this.props.gameState) >= 0){
       nextGame = this.props.playAgain;
       return(this.showButton(nextGame));
